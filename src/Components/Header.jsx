@@ -11,7 +11,7 @@ import { HiPlus, HiDotsVertical } from "react-icons/hi";
 import HeaderItem from "./HeaderItem";
 
 function Header() {
-  const [toggle,setToggle]=useState(false);
+  const [toggle, setToggle] = useState(false);
   const menu = [
     {
       name: "HOME",
@@ -51,23 +51,29 @@ function Header() {
           {menu.map(
             (item, index) =>
               index < 3 && (
-                <HeaderItem key={""} name={item.name} Icon={item.icon} />
+                <HeaderItem
+                  key={item.name}
+                  name={item.name}
+                  Icon={item.icon}
+                />
               ),
           )}
-          <div className="md:hidden"onClick={()=>setToggle(!toggle)}>
+          <div className="md:hidden" onClick={() => setToggle(!toggle)}>
             <HeaderItem name={""} Icon={HiDotsVertical} />
-            {toggle?<div className="absolute mt-3 bg-[#121212] border-[1px} border-gray-700 p-3 px-5 py-4">
-              {menu.map(
-                (item, index) =>
-                  index > 2 && (
-                    <HeaderItem
-                      key={item.name}
-                      name={item.name}
-                      Icon={item.icon}
-                    />
-                  ),
-              )}
-            </div>:null}
+            {toggle ? (
+              <div className="absolute mt-3 bg-[#121212] border-[1px} border-gray-700 p-3 px-5 py-4">
+                {menu.map(
+                  (item, index) =>
+                    index > 2 && (
+                      <HeaderItem
+                        key={item.name}
+                        name={item.name}
+                        Icon={item.icon}
+                      />
+                    ),
+                )}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
