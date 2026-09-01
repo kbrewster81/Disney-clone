@@ -9,7 +9,10 @@ const movieByGenreBaseURL='https://api.themoviedb.org/3/discover/movie?api_key=5
 const getTrendingVideos = axios.get(
   moviesBaseUrl + "/trending/all/day?api_key=" + api_key,
 );
+const getMovieByGenreId = (id) =>
+  axios.get(movieByGenreBaseURL + "&with_genres=" + id);
 
 export default {
-  getTrendingVideos
+  getTrendingVideos,
+  getMovieByGenreId,
 };
